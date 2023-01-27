@@ -43,7 +43,11 @@ class FaceNet:
         else:
             builder = embedding_model.get_keras_model_from_tensorflow
         self.model = builder(self.metadata, self.cache_folder)
-
+        
+    def get_model_with_weights(self):
+        # get_model_with_weights ( check metadata for different model and weights options)
+        return self.model
+    
     def _normalize(self, image):
         if self.metadata['fixed_image_standardization']:
             return (np.float32(image) - 127.5) / 127.5
